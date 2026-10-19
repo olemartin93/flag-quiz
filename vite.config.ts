@@ -3,7 +3,11 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
+// GitHub Pages serves the app from /<repo>/, so the deploy workflow sets BASE_PATH.
+const base = process.env.BASE_PATH ?? '/'
+
 export default defineConfig({
+  base,
   build: {
     // Keep every flag as its own file so the service worker can cache it.
     assetsInlineLimit: 0,
@@ -22,8 +26,8 @@ export default defineConfig({
         background_color: '#0f172a',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: '/',
-        scope: '/',
+        start_url: base,
+        scope: base,
         categories: ['education', 'games'],
         icons: [
           { src: 'pwa-192.png', sizes: '192x192', type: 'image/png' },

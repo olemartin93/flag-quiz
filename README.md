@@ -26,3 +26,11 @@ npm run preview
 ```
 
 Flag artwork comes from [flag-icons](https://github.com/lipis/flag-icons) (MIT).
+
+## Deploying to GitHub Pages
+
+`.github/workflows/deploy.yml` builds and deploys on every push to `main` (or run it manually from the Actions tab).
+
+One-time setup: in the repo go to **Settings → Pages** and set **Source** to **GitHub Actions**.
+
+The site will be at `https://<user>.github.io/<repo>/`. The workflow sets `BASE_PATH=/<repo>/` so assets, the manifest and the service worker resolve under that subpath.
