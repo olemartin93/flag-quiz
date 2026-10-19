@@ -9,7 +9,7 @@ export function summaryShareText(game: GameSummary): string {
   if (game.bestStreak >= 3) lines.push(`🔥 best streak ${game.bestStreak}`)
   // Long endless runs would make a huge grid.
   lines.push(grid.length > 40 ? `${[...grid].slice(0, 20).join('')}…` : grid)
-  if (typeof location !== 'undefined') lines.push(location.origin)
+  if (typeof location !== 'undefined') lines.push(new URL(import.meta.env.BASE_URL, location.origin).href)
   return lines.join('\n')
 }
 
